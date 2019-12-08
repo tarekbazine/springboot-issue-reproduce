@@ -1,4 +1,4 @@
-package com.example.issue_reproduce;
+package com.example.issue_reproduce.core;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,16 +13,19 @@ import java.util.List;
 @Table(name = "documents")
 public class Document {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-	@Column(name = "name")
-	private String name;
+    @Column(name = "name")
+    private String name;
 
-	@Column(name = "path")
-	private String path;
+    public Document(){}
+
+    public Document(String name) {
+        this.name = name;
+    }
 
 //
 //	@ManyToOne(fetch = FetchType.LAZY)

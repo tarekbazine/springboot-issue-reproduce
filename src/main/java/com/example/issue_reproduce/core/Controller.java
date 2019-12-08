@@ -1,4 +1,4 @@
-package com.example.issue_reproduce;
+package com.example.issue_reproduce.core;
 
 import org.apache.logging.log4j.Level;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +18,13 @@ import java.util.List;
 @RequestMapping(value = "/api/emails")
 public class Controller {
 
+    @Autowired
+    IEmailRepository emailRepository;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<?> emails(Principal principal) {
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(emailRepository.findAll(), HttpStatus.OK);
     }
 
 //	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
